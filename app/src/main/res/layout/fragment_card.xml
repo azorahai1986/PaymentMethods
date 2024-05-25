@@ -14,6 +14,18 @@
         app:layout_constraintStart_toStartOf="parent"
         android:elevation="30dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/layoutCreditCard"
+        app:layout_constraintStart_toStartOf="@id/layoutCreditCard"
+        app:layout_constraintEnd_toEndOf="@id/layoutCreditCard"
+        android:gravity="center"
+        android:layout_marginBottom="35dp"
+        android:text="@string/saldo_xxx"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRelatedCards"
         android:layout_width="match_parent"
