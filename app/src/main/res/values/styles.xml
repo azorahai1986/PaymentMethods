@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_bsd_dialog</item>
+    </style>
+
+    <style name="RedButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/red_button_background</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/barlow_bold</item>
+        <item name="android:layout_marginEnd">22dp</item>
+        <item name="android:layout_marginStart">22dp</item>
+
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:background">@color/white</item>
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="textBoxStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:drawableTint">@color/white</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:fontFamily">@font/barlow_bold</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:background">@drawable/edittext_roundedcorners_grey</item>
+    </style>
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PaymentMethods</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_email">Nuevo Email</string>
+    <string name="password">Contraseña</string>
+    <string name="account">Registrarse</string>
+    <string name="create_account">Crear Usuario</string>
+    <string name="input_your_email">Ingrese su email</string>
+    <string name="create_password">Ingrese una contraseña</string>
+    <string name="enter">Ingresar</string>
+    <string name="title_new_card">agregar tarjeta</string>
+    <string name="title_qr_payment">pagar con qr</string>
+</resources>
