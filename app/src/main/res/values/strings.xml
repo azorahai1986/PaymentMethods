@@ -12,4 +12,6 @@
     <string name="title_new_card">agregar tarjeta</string>
     <string name="title_qr_payment">pagar con qr</string>
     <string name="saldo_xxx">Saldo: xxxxxxxx xxxx</string>
+    <string name="american_exppres">American Exppres</string>
+    <string name="hiden_numbers">xxxx xxxx xxxx 1234</string>
 </resources>

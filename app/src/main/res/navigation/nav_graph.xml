@@ -19,8 +19,8 @@
         android:name="com.hernan.paymentmethods.ui.fragments.CardFragment"
         tools:layout="@layout/fragment_card">
         <action
-            android:id="@+id/action_CardFragment_to_LoginFragment"
-            app:destination="@id/LoginFragment" />
+            android:id="@+id/action_CardFragment_to_AddNewCardFragment"
+            app:destination="@id/AddNewCardFragment" />
     </fragment>
 
     <fragment
@@ -30,6 +30,12 @@
         <action
             android:id="@+id/action_AccountBsFragment_to_CardFragment"
             app:destination="@id/CardFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddNewCardFragment"
+        android:name="com.hernan.paymentmethods.ui.fragments.AddNewCardFragment"
+        tools:layout="@layout/fragment_add_new_card">
     </fragment>
 
 
