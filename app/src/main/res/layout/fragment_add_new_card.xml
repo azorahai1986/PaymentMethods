@@ -1,14 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.AddNewCardFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etCardNumber"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:ems="10"
+        app:hintAnimationEnabled= "true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:importantForAutofill="noExcludeDescendants"
+        style="@style/textBoxStyle"
+        android:hint="@string/hiden_numbers"
+        android:inputType="number"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="15dp"
+        android:imeOptions="actionNext"
+        android:drawableStart="@drawable/ic_lock"/>
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etCardName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:ems="10"
+        app:hintAnimationEnabled= "true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:importantForAutofill="noExcludeDescendants"
+        style="@style/textBoxStyle"
+        android:hint="@string/full_name"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@id/etCardNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="15dp"
+        android:imeOptions="actionNext"
+        android:drawableStart="@drawable/ic_lock"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        app:hintAnimationEnabled= "true"
+        app:layout_constraintHorizontal_weight="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:importantForAutofill="noExcludeDescendants"
+        style="@style/textBoxStyle"
+        android:hint="@string/vence"
+        android:inputType="date"
+        app:layout_constraintTop_toBottomOf="@id/etCardName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/etSecurityCode"
+        android:padding="15dp"
+        android:imeOptions="actionNext"
+        android:drawableStart="@drawable/ic_lock"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etSecurityCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        app:hintAnimationEnabled= "true"
+        app:layout_constraintHorizontal_weight="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:importantForAutofill="noExcludeDescendants"
+        style="@style/textBoxStyle"
+        android:hint="@string/security_code"
+        android:inputType="number"
+        app:layout_constraintTop_toTopOf="@id/etDate"
+        app:layout_constraintStart_toEndOf="@id/etDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/etDate"
+        android:paddingVertical="15dp"
+        android:imeOptions="actionGo"
+        android:drawableStart="@drawable/ic_lock"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btAddCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        style="@style/RedButtonStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"
+        android:text="@string/add_new_card"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

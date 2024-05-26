@@ -1,11 +1,15 @@
 package com.hernan.paymentmethods.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hernan.paymentmethods.R
 import com.hernan.paymentmethods.databinding.FragmentCardBinding
 import com.hernan.paymentmethods.domain.CreditCard
 import com.hernan.paymentmethods.ui.adapters.CreditCardAdapter
@@ -26,9 +30,15 @@ class CardFragment : Fragment() {
 
     private fun bottomNavView() {
         binding.apply {
-            /*bottomView.setOnItemSelectedListener { menuItem ->
+            bottomView.setOnItemSelectedListener { menuItem ->
                 //goToAddNewCard(menuItem.itemId)
-            }*/
+                Log.d("BOTTOM ID", menuItem.toString())
+                when (menuItem.toString()) {
+                    getString(R.string.title_new_card) -> goToFragment(CardFragmentDirections.actionCardFragmentToAddNewCardFragment())
+                    getString(R.string.title_qr_payment) -> goToFragment(CardFragmentDirections.actionCardFragmentToAddNewCardFragment())
+                }
+                true
+            }
         }
     }
 
@@ -41,8 +51,8 @@ class CardFragment : Fragment() {
         }
     }
 
-    private fun goToAddNewCard(itemId: Int) {
-
+    private fun goToFragment(action: NavDirections) {
+        findNavController().navigate(action)
     }
 
     fun cardList(): ArrayList<CreditCard> {
