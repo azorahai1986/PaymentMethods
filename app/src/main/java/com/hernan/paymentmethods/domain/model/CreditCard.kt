@@ -1,4 +1,4 @@
-package com.hernan.paymentmethods.domain
+package com.hernan.paymentmethods.domain.model
 
 data class CreditCard(
     val cardImage:String = "",

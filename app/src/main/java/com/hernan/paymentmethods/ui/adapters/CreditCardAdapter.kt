@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.hernan.paymentmethods.R
 import com.hernan.paymentmethods.databinding.ItemCreditCardBinding
-import com.hernan.paymentmethods.domain.CreditCard
+import com.hernan.paymentmethods.domain.model.CreditCard
 
 class CreditCardAdapter(val cardList: ArrayList<CreditCard>, val context:Context): RecyclerView.Adapter<CreditCardAdapter.ViewHolderCard>() {
 

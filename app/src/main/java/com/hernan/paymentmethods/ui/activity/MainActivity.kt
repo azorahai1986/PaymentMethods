@@ -8,7 +8,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.hernan.paymentmethods.R
 import com.hernan.paymentmethods.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityMainBinding
@@ -17,9 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            window.statusBarColor = resources.getColor(R.color.blue, theme)
-        }
+        window.statusBarColor = resources.getColor(R.color.blue, theme)
         setSupportActionBar(binding.toolbar)
         binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.white))
         val navController = findNavController(R.id.nav_host_fragment_activity_main)

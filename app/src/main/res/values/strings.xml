@@ -18,4 +18,5 @@
     <string name="security_code">    123</string>
     <string name="full_name">Nombre completo</string>
     <string name="add_new_card">Agregar Tarjeta</string>
+    <string name="insert_card_data">Ingresa los datos de la tarjeta que quieras adherir</string>
 </resources>
