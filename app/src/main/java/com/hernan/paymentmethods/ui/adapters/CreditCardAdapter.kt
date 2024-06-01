@@ -27,6 +27,7 @@ class CreditCardAdapter(val cardList: ArrayList<CreditCard>, val context:Context
             //Glide.with(context).load(card.cardImage).into(cardImage)
             tvCardName.text = card.cardName
             cardNumber.text = card.cardNumber
+
         }
     }
 
