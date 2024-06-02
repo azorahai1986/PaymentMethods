@@ -1,11 +1,13 @@
 package com.hernan.paymentmethods.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.hernan.paymentmethods.databinding.FragmentQrBinding
 import com.hernan.paymentmethods.ui.viewmodels.QrCodeVm
@@ -27,7 +29,11 @@ class QrFragment : Fragment() {
     ): View? {
 
         binding = FragmentQrBinding.inflate(layoutInflater, container, false)
-        viewModelQr.generateQrCode("John Doe")
+
+        val args: QrFragmentArgs by navArgs()
+        val personName = args.name
+        Log.d("PERSON NAME", personName)
+        viewModelQr.generateQrCode(personName)
         getQrCode()
         return binding.root
     }
@@ -40,7 +46,13 @@ class QrFragment : Fragment() {
                         response: Response<ResponseBody>
                     ) {
                         val imageUrl = response.raw().request.url.toString()
-                        Glide.with(requireContext()).load(imageUrl).into(binding.qrImage)
+                        if (imageUrl.isNotEmpty()) {
+
+                            binding.progressBar.visibility = View.GONE
+                            binding.qrImage.visibility = View.VISIBLE
+                            Glide.with(requireContext()).load(imageUrl).into(binding.qrImage)
+
+                        }
                     }
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     }

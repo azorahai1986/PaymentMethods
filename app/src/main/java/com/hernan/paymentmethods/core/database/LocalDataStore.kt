@@ -15,6 +15,7 @@ import kotlinx.serialization.json.Json
 object LocalDataStore {
     private val Context.dataStore by preferencesDataStore(Constants.DATA_STORE_USER)
     private val CREDIT_CARD_LIST = stringPreferencesKey("creditCardList")
+    private val PERSON_NAME = stringPreferencesKey("personaName")
 
     suspend fun saveCreditCard(context: Context, creditCard: CreditCard) {
         context.dataStore.edit { preferences ->
@@ -33,4 +34,27 @@ object LocalDataStore {
             }
 
     }
+
+    fun getCreditCardByNumber(context: Context, cardNumber: String): Flow<CreditCard?> {
+        return context.dataStore.data
+            .map { preferences ->
+                val currentListJson = preferences[CREDIT_CARD_LIST] ?: "[]"
+                val creditCardList: List<CreditCard> = Json.decodeFromString(currentListJson)
+                creditCardList.find { it.cardNumber == cardNumber }
+            }
+    }
+    suspend fun savePersonName(context: Context, personName: String) {
+        context.dataStore.edit { preferences ->
+            preferences[PERSON_NAME] = personName
+        }
+    }
+
+    fun getPersonName(context: Context): Flow<String?> {
+        return context.dataStore.data
+            .map { preferences ->
+                preferences[PERSON_NAME] ?: ""
+            }
+    }
+
+
 }

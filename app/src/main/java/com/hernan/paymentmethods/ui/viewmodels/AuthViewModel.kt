@@ -1,7 +1,6 @@
 package com.hernan.paymentmethods.ui.viewmodels
 
 import android.app.Activity
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +10,6 @@ import com.google.firebase.auth.AuthResult
 import com.hernan.paymentmethods.domain.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import okhttp3.ResponseBody
-import retrofit2.Call
 import javax.inject.Inject
 
 @HiltViewModel

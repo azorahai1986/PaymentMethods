@@ -45,14 +45,14 @@
         android:id="@+id/tvCardName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/american_exppres"
+        android:text=""
         style="@style/textItem"
         app:layout_constraintTop_toTopOf="@id/etCardNumber"
         app:layout_constraintEnd_toEndOf="@id/etCardNumber"
         app:layout_constraintBottom_toBottomOf="@id/etCardNumber"
         android:layout_marginEnd="15dp"
         android:elevation="10dp"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etPersonName"
@@ -91,7 +91,8 @@
         android:layout_marginTop="16dp"
         android:padding="15dp"
         android:imeOptions="actionNext"
-        android:drawableStart="@drawable/ic_lock"/>
+        android:drawableStart="@drawable/ic_lock"
+        android:maxLength="5"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etSecurityCode"
@@ -111,7 +112,8 @@
         app:layout_constraintBottom_toBottomOf="@id/etDate"
         android:paddingVertical="15dp"
         android:imeOptions="actionGo"
-        android:drawableStart="@drawable/ic_lock"/>
+        android:drawableStart="@drawable/ic_lock"
+        android:maxLength="4"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btAddCard"

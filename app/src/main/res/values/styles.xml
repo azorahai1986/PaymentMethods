@@ -44,8 +44,8 @@
         <item name="android:drawableTint">@color/white</item>
         <item name="android:drawablePadding">16dp</item>
         <item name="android:fontFamily">@font/barlow_bold</item>
-        <item name="android:paddingStart">4dp</item>
-        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
         <item name="android:layout_marginHorizontal">16dp</item>
         <item name="android:background">@drawable/edittext_roundedcorners_grey</item>
     </style>

@@ -1,34 +1,33 @@
 package com.hernan.paymentmethods.ui.fragments
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.hernan.paymentmethods.R
+import com.hernan.paymentmethods.core.database.LocalDataStore
 import com.hernan.paymentmethods.databinding.FragmentAccountBsBinding
+import com.hernan.paymentmethods.domain.model.CreditCard
+import com.hernan.paymentmethods.ui.validate
 import com.hernan.paymentmethods.ui.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AccountBsFragment : BottomSheetDialogFragment() {
 
     private val viewModel:AuthViewModel by viewModels()
     private lateinit var binding: FragmentAccountBsBinding
-    private var auth: FirebaseAuth = Firebase.auth
     private var validEmail = false
     private var validPassword = false
 
@@ -37,30 +36,38 @@ class AccountBsFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAccountBsBinding.inflate(layoutInflater, container, false)
-        requireDialog().setCanceledOnTouchOutside(false)
-        requireDialog().setCancelable(false)
         setUpViews()
-
-
-
         return binding.root
     }
 
     private fun setUpViews() {
         binding.apply {
-            etUser.addTextChangedListener(emailTextWatcher)
-            etPassword.addTextChangedListener(passwordTextWatcher)
+            etUser.validate(
+                validator = { input -> isValidEmail(input) },
+                onValidStateChange = { isValid -> validEmail = isValid }
+            )
+
+            etPassword.validate(
+                validator = { input -> isValidPassword(input) },
+                onValidStateChange = { isValid -> validPassword = isValid }
+            )
+
             btCreateAccount.setOnClickListener {
-                if (validEmail && validPassword) {
+                if (validEmail && validPassword && etPersonName.text.isNotEmpty()) {
                     viewModel.createAccount(etUser.text.toString(), etPassword.text.toString(), requireActivity())
                     validateAccount()
+                    savePersonName(etPersonName.text.toString())
                 } else {
-                    showToast("Alguno de los datos ingresados es erroneo ó está vacio")
+                    showToast("Alguno de los datos ingresados es erróneo o está vacío")
                 }
-
             }
         }
+    }
 
+    private fun savePersonName(personName:String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            LocalDataStore.savePersonName(requireContext(), personName)
+        }
     }
 
     private fun goToCardFragment() {
@@ -76,46 +83,14 @@ class AccountBsFragment : BottomSheetDialogFragment() {
     private fun validateAccount() {
         viewModel.auth.observe(viewLifecycleOwner, Observer {
             if (it != null && it.isSuccessful) {
-                Log.d("USUARIO CREADO", it.isSuccessful.toString())
                goToCardFragment()
 
             }
         })
     }
 
-    private val emailTextWatcher = object : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-        override fun afterTextChanged(s: Editable?) {
-            if (!isValidEmail(s.toString())) {
-                changeColor(binding.etUser, R.color.red)
-            } else {
-                changeColor(binding.etUser, R.color.black)
-                validEmail = true
-            }
-        }
-    }
-
     private fun isValidEmail(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
-
-    private val passwordTextWatcher = object : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-        override fun afterTextChanged(s: Editable?) {
-            if (!isValidPassword(s.toString())) {
-                changeColor(binding.etPassword, R.color.red)
-
-            } else {
-                changeColor(binding.etPassword, R.color.black)
-                validPassword = true
-            }
-        }
     }
 
     private fun isValidPassword(password: String): Boolean {
@@ -130,7 +105,4 @@ class AccountBsFragment : BottomSheetDialogFragment() {
         ).show()
     }
 
-    fun changeColor(e: EditText, color: Int) {
-        e.setTextColor(ContextCompat.getColor(requireContext(), color))
-    }
 }

@@ -9,7 +9,7 @@ import com.hernan.paymentmethods.R
 import com.hernan.paymentmethods.databinding.ItemCreditCardBinding
 import com.hernan.paymentmethods.domain.model.CreditCard
 
-class CreditCardAdapter(val cardList: ArrayList<CreditCard>, val context:Context): RecyclerView.Adapter<CreditCardAdapter.ViewHolderCard>() {
+class CreditCardAdapter(val cardList: ArrayList<CreditCard>, val context:Context, val iPosition:IPosition): RecyclerView.Adapter<CreditCardAdapter.ViewHolderCard>() {
 
     inner class ViewHolderCard(itemView: View):RecyclerView.ViewHolder(itemView) {
         val binding = ItemCreditCardBinding.bind(itemView)
@@ -24,12 +24,19 @@ class CreditCardAdapter(val cardList: ArrayList<CreditCard>, val context:Context
     override fun onBindViewHolder(holder: ViewHolderCard, position: Int) {
         val card = cardList[position]
         holder.binding.apply {
-            //Glide.with(context).load(card.cardImage).into(cardImage)
             tvCardName.text = card.cardName
             cardNumber.text = card.cardNumber
+            constraintAdapter.setOnClickListener {
+                iPosition.setCardPosition(card.cardNumber)
 
+            }
         }
     }
 
+
+
+    interface IPosition {
+        fun setCardPosition(cardNumber: String)
+    }
 
 }

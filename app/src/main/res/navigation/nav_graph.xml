@@ -24,6 +24,11 @@
         <action
             android:id="@+id/action_CardFragment_to_QrFragment"
             app:destination="@id/QrFragment" />
+
+        <action
+            android:id="@+id/action_CardFragment_to_NewPayFragment"
+            app:destination="@id/NewPayFragment" />
+
     </fragment>
 
     <fragment
@@ -45,6 +50,20 @@
         android:id="@+id/QrFragment"
         android:name="com.hernan.paymentmethods.ui.fragments.QrFragment"
         tools:layout="@layout/fragment_qr">
+
+        <argument
+            android:name="name"
+            app:argType="string"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/NewPayFragment"
+        android:name="com.hernan.paymentmethods.ui.fragments.NewPayFragment"
+        tools:layout="@layout/fragment_new_pay">
+
+        <argument
+            android:name="cardNumber"
+            app:argType="string"/>
     </fragment>
 
 

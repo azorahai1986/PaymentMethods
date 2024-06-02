@@ -14,9 +14,12 @@
     <string name="saldo_xxx">Saldo: xxxxxxxx xxxx</string>
     <string name="american_exppres">American Exppres</string>
     <string name="hiden_numbers">xxxx xxxx xxxx 1234</string>
-    <string name="vence">Vence --/--/--</string>
+    <string name="vence">Vence --/--</string>
     <string name="security_code">    123</string>
     <string name="full_name">Nombre completo</string>
     <string name="add_new_card">Agregar Tarjeta</string>
     <string name="insert_card_data">Ingresa los datos de la tarjeta que quieras adherir</string>
+    <string name="person_name">Nombre y apellido</string>
+    <string name="difrent_names">El nombre de la Tarjeta no coincide con el Nombre del Usuario</string>
+    <string name="pay_nfc">Pagar Con NFC</string>
 </resources>

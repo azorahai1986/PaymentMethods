@@ -9,6 +9,7 @@
     android:layout_marginHorizontal="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintAdapter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
