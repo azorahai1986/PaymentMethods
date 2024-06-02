@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.NewPayFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintCreditCard"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/blue"
+        android:elevation="30dp"
+        app:layout_constraintBottom_toTopOf="@id/cardViewNfc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageBig"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="24dp"
+            android:src="@drawable/credit_card_rectangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ImageSmall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="50dp"
+            android:src="@drawable/credit_card_rectangle"
+            app:layout_constraintBottom_toBottomOf="@id/imageBig"
+            app:layout_constraintStart_toStartOf="@id/imageBig"
+            app:layout_constraintTop_toTopOf="@id/imageBig" />
+
+        <TextView
+            android:id="@+id/tvCardName"
+            style="@style/textItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp"
+            android:text="@string/american_exppres"
+            app:layout_constraintEnd_toEndOf="@id/imageBig"
+            app:layout_constraintStart_toStartOf="@id/imageBig"
+            app:layout_constraintTop_toTopOf="@id/imageBig" />
+
+        <TextView
+            android:id="@+id/tvPersonName"
+            style="@style/textItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            app:layout_constraintStart_toStartOf="@id/ImageSmall"
+            app:layout_constraintTop_toBottomOf="@id/ImageSmall" />
+
+        <TextView
+            android:id="@+id/tvCardDate"
+            style="@style/textItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
+            android:text="@string/vence"
+            app:layout_constraintEnd_toEndOf="@id/imageBig"
+            app:layout_constraintTop_toBottomOf="@id/ImageSmall" />
+
+        <TextView
+            android:id="@+id/tvCardNumber"
+            style="@style/textItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/hiden_numbers"
+            app:layout_constraintEnd_toEndOf="@id/imageBig"
+            app:layout_constraintStart_toStartOf="@id/ImageSmall"
+            app:layout_constraintTop_toBottomOf="@id/tvPersonName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewNfc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/constraintCreditCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="48dp"
+        android:layout_marginHorizontal="24dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="30dp"
+        app:layout_constraintVertical_bias="0.13999999">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/image_nfc"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pay_nfc"
+                style="@style/textItem"
+                android:padding="12dp"
+                android:textSize="18sp"
+                android:gravity="center_horizontal"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
