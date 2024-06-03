@@ -37,7 +37,6 @@ fun EditText.creditCardName(
             val text = s.toString().replace(" ", "")
             val formattedText = StringBuilder()
 
-            // Añadir un espacio cada 4 caracteres
             for (i in text.indices) {
                 if (i > 0 && i % 4 == 0) {
                     formattedText.append(" ")
@@ -71,10 +70,8 @@ fun EditText.creditCardDate() {
 
         override fun afterTextChanged(s: Editable?) {
             if (isFormatting) return
-
             val text = s.toString().replace("/", "")
             val formattedText = text.chunked(2).joinToString("/")
-
             isFormatting = true
             setText(formattedText)
             setSelection(formattedText.length)
