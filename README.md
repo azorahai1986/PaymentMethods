@@ -69,7 +69,7 @@ Las tarjetas se agregan con datasTore de Sharepreferences como se vé mas arriba
 ## QR:
 
 Desde el bottomBar se ingresa a la pantalla de Qr. En la cual con el nombre del usuario se podrá crear una imagen QR. esta información se obtuvo de una api diferente a la
-habiliotada en el challenge. ya que hice uso de los llamados permitidos y ya no me funcionó. esta es la que usé: "https://api.qrserver.com/v1/create-qr-code/"
+habilitada en el challenge. ya que hice uso de los llamados permitidos y ya no me funcionó. esta es la que usé: "https://api.qrserver.com/v1/create-qr-code/"
  estos son los métodos de llamado a la Api:
 
 ![](https://firebasestorage.googleapis.com/v0/b/redsocialtrabajos.appspot.com/o/images%2FScreenshot_17.png?alt=media&token=21a2be7e-95d8-47b6-8f3c-9b3be9254afb)
