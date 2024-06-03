@@ -84,6 +84,7 @@ De esta respuesta se obtiene:
 ![](https://firebasestorage.googleapis.com/v0/b/redsocialtrabajos.appspot.com/o/images%2FScreenshot_22.png?alt=media&token=9c6dea2b-0e76-4152-b44a-6dd857f1567c)
 
 #NFC:
+
 Desde la clase CardFragment, si se tipea sobre algún item de la lista de tarjetas asociadas se accederá a una pantalla donde se verán los datos de la tarjeta y un botón que abrirá la opción de pago con NFC. esta última función no se ha implementado. la pantalla es solo de modo informativa y simula lo que sería un pago con el sistema Nfc.
 
 ![](https://firebasestorage.googleapis.com/v0/b/redsocialtrabajos.appspot.com/o/images%2FScreenshot_23.png?alt=media&token=e8faea02-b8b7-434c-93e5-cbfc8c19e426)
