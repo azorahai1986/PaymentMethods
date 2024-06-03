@@ -8,7 +8,9 @@ Antes un usuario debe registrarse en la app. Una vez hecho, se accede a la panta
 En la pantalla de Login tendremos los campos de Email y Contraseña para ingresar a la app con nuestros datos existentes.
 Si el usuario no está registrado accederá a la pantalla de registro tipeando el texto "Registrarse"
 
+
 ![](https://firebasestorage.googleapis.com/v0/b/redsocialtrabajos.appspot.com/o/images%2FScreenshot_1.png?alt=media&token=6e0af587-f077-43ba-afe0-7ee63bd3715a)
+
 
 En este apartado se utiliza el logueo y registro con la Api de FirebaseAuth. 
 
@@ -20,6 +22,7 @@ Si es exitoso el login se accederá a la pantalla de tarjetas asociadas. si no l
 ![](https://firebasestorage.googleapis.com/v0/b/redsocialtrabajos.appspot.com/o/images%2FScreenshot_2.png?alt=media&token=f43600f6-2c92-4498-bbd4-fdd253c117de)
 ![](https://firebasestorage.googleapis.com/v0/b/redsocialtrabajos.appspot.com/o/images%2FScreenshot_3.png?alt=media&token=62f05b9d-2a98-4bdf-8411-d5d82714c820)
 ![](https://firebasestorage.googleapis.com/v0/b/redsocialtrabajos.appspot.com/o/images%2FScreenshot_4.png?alt=media&token=322c194f-b504-40fe-a928-d50cf9c141df)
+
 
 ## Account:
 
