@@ -21,5 +21,7 @@
     <string name="insert_card_data">Ingresa los datos de la tarjeta que quieras adherir</string>
     <string name="person_name">Nombre y apellido</string>
     <string name="difrent_names">El nombre de la Tarjeta no coincide con el Nombre del Usuario</string>
+    <string name="empty_values">No deben quedar campos vacios</string>
     <string name="pay_nfc">Pagar Con NFC</string>
+    <string name="image">image</string>
 </resources>

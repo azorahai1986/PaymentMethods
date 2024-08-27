@@ -1,4 +1,4 @@
-package com.hernan.paymentmethods.domain.model
+package com.hernan.paymentmethods.data.model
 
 import kotlinx.serialization.Serializable
 

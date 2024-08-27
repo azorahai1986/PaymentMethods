@@ -5,27 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hernan.paymentmethods.R
 import com.hernan.paymentmethods.core.database.LocalDataStore
+import com.hernan.paymentmethods.data.UtilsLocalData
 import com.hernan.paymentmethods.databinding.FragmentAddNewCardBinding
-import com.hernan.paymentmethods.domain.model.CreditCard
+import com.hernan.paymentmethods.data.model.CreditCard
+import com.hernan.paymentmethods.ui.activity.MainActivity
 import com.hernan.paymentmethods.ui.creditCardDate
 import com.hernan.paymentmethods.ui.creditCardName
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AddNewCardFragment : Fragment() {
 
-    private var personName: String? = null
     private lateinit var binding: FragmentAddNewCardBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddNewCardBinding.inflate(layoutInflater, container, false)
         binding.btAddCard.setOnClickListener { setNewCard() }
 
@@ -34,12 +33,9 @@ class AddNewCardFragment : Fragment() {
         return binding.root
     }
     fun getUserName() {
-        CoroutineScope(Dispatchers.IO).launch {
-            LocalDataStore.getPersonName(requireContext()).collect { name ->
-                personName = name
-            }
-        }
+        UtilsLocalData.getUserName(requireContext())
     }
+
     private fun setNumberToCardName() {
         binding.etCardNumber.creditCardName(binding.tvCardName)
         binding.etDate.creditCardDate()
@@ -56,16 +52,27 @@ class AddNewCardFragment : Fragment() {
                 etPersonName.text.toString()
                 )
 
-            if (etPersonName.text.toString() == personName) {
+            val isAnyFieldEmpty = listOf(
+                creditCard.cardName,
+                creditCard.cardNumber,
+                creditCard.cardSecurityCode,
+                creditCard.endDate,
+                creditCard.personName
+            ).any { it.isBlank() }
+
+            if (isAnyFieldEmpty) {
+                (activity as? MainActivity)?.message(getString(R.string.empty_values))
+            } else if (etPersonName.text.toString().trim() == UtilsLocalData.personName) {
                 viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                     LocalDataStore.saveCreditCard(requireContext(), creditCard)
                 }
+                findNavController().popBackStack()
+
             } else {
-                Toast.makeText(requireContext(), getString(R.string.difrent_names), Toast.LENGTH_SHORT).show()
+                (activity as? MainActivity)?.message(getString(R.string.difrent_names))
             }
 
         }
-        findNavController().popBackStack()
     }
 
 }

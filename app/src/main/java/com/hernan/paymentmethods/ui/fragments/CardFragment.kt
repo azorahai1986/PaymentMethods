@@ -11,16 +11,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hernan.paymentmethods.R
 import com.hernan.paymentmethods.core.database.LocalDataStore
+import com.hernan.paymentmethods.data.UtilsLocalData
 import com.hernan.paymentmethods.databinding.FragmentCardBinding
-import com.hernan.paymentmethods.domain.model.CreditCard
+import com.hernan.paymentmethods.data.model.CreditCard
 import com.hernan.paymentmethods.ui.adapters.CreditCardAdapter
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CardFragment : Fragment(), CreditCardAdapter.IPosition {
 
-    private var personName: String? = null
     private lateinit var binding: FragmentCardBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,13 +46,10 @@ class CardFragment : Fragment(), CreditCardAdapter.IPosition {
         }
     }
 
-    fun getUserName() {
-        CoroutineScope(Dispatchers.IO).launch {
-            LocalDataStore.getPersonName(requireContext()).collect { name ->
-                personName = name
-            }
-        }
+    private fun getUserName() {
+        UtilsLocalData.getUserName(requireContext())
     }
+
     private fun inflateRecycler(adapter: CreditCardAdapter) {
         binding.apply {
             rvRelatedCards.layoutManager = LinearLayoutManager(requireContext())
@@ -66,7 +62,7 @@ class CardFragment : Fragment(), CreditCardAdapter.IPosition {
             bottomView.setOnItemSelectedListener { menuItem ->
                 when (menuItem.toString()) {
                     getString(R.string.title_new_card) -> goToFragment(CardFragmentDirections.actionCardFragmentToAddNewCardFragment())
-                    getString(R.string.title_qr_payment) -> goToFragment(CardFragmentDirections.actionCardFragmentToQrFragment(personName.toString()))
+                    getString(R.string.title_qr_payment) -> goToFragment(CardFragmentDirections.actionCardFragmentToQrFragment())
                 }
                 true
             }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hernan.paymentmethods.R
 import com.hernan.paymentmethods.databinding.ItemCreditCardBinding
-import com.hernan.paymentmethods.domain.model.CreditCard
+import com.hernan.paymentmethods.data.model.CreditCard
 
 class CreditCardAdapter(val cardList: ArrayList<CreditCard>, val context:Context, val iPosition:IPosition): RecyclerView.Adapter<CreditCardAdapter.ViewHolderCard>() {
 

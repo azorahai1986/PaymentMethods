@@ -1,9 +1,9 @@
 buildscript {
     ext.kotlin_version = "1.6.10"
-    ext.hilt_version = '2.47'
+    ext.hilt_version = '2.52'
     dependencies {
         classpath 'com.google.gms:google-services:4.4.2'
-        classpath 'com.android.tools.build:gradle:8.0.1'
+        classpath 'com.android.tools.build:gradle:8.0.2'
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7")
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
@@ -23,6 +23,6 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
     id("com.google.gms.google-services") version "4.4.2" apply false
 }
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }

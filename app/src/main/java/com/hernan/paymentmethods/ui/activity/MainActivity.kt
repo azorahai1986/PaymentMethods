@@ -1,6 +1,7 @@
 package com.hernan.paymentmethods.ui.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
@@ -36,5 +37,9 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    fun message(message:String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

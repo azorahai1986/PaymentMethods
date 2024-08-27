@@ -31,7 +31,7 @@ class AccountBsFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAccountBsBinding.inflate(layoutInflater, container, false)
         setUpViews()
         return binding.root
@@ -53,7 +53,6 @@ class AccountBsFragment : BottomSheetDialogFragment() {
                 if (validEmail && validPassword && etPersonName.text.isNotEmpty()) {
                     viewModel.createAccount(etUser.text.toString(), etPassword.text.toString(), requireActivity())
                     validateAccount()
-                    savePersonName(etPersonName.text.toString())
                 } else {
                     showToast("Alguno de los datos ingresados es erróneo o está vacío")
                 }
@@ -78,10 +77,14 @@ class AccountBsFragment : BottomSheetDialogFragment() {
     }
 
     private fun validateAccount() {
+        binding.progress.visibility = View.VISIBLE
         viewModel.auth.observe(viewLifecycleOwner, Observer {
             if (it != null && it.isSuccessful) {
                goToCardFragment()
-
+                savePersonName(binding.etPersonName.text.toString())
+            } else {
+                showToast("Algo Salió mal...")
+                binding.progress.visibility = View.GONE
             }
         })
     }

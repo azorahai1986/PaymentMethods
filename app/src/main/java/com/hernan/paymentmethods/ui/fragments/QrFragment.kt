@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.hernan.paymentmethods.data.UtilsLocalData
 import com.hernan.paymentmethods.databinding.FragmentQrBinding
 import com.hernan.paymentmethods.ui.viewmodels.QrCodeVm
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,14 +27,11 @@ class QrFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = FragmentQrBinding.inflate(layoutInflater, container, false)
-
-        val args: QrFragmentArgs by navArgs()
-        val personName = args.name
-        Log.d("PERSON NAME", personName)
-        viewModelQr.generateQrCode(personName)
+        UtilsLocalData.getUserName(requireContext())
+        viewModelQr.generateQrCode(UtilsLocalData.personName)
         getQrCode()
         return binding.root
     }

@@ -50,10 +50,6 @@
         android:id="@+id/QrFragment"
         android:name="com.hernan.paymentmethods.ui.fragments.QrFragment"
         tools:layout="@layout/fragment_qr">
-
-        <argument
-            android:name="name"
-            app:argType="string"/>
     </fragment>
 
     <fragment
